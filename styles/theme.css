@@ -1,0 +1,244 @@
+/*
+ * "Athonite" visual theme layered on top of style0.css + site.css.
+ * Palette sampled directly from the monastery's icon of St. Paraskevi:
+ * deep maroon robe, olive veil, antique gold halo/border, warm ink.
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=EB+Garamond:ital,wght@0,400;0,600;1,400&display=swap');
+
+:root {
+	--maroon: #551c11;
+	--maroon-dark: #3a130b;
+	--olive: #323b17;
+	--gold: #b8873f;
+	--gold-light: #d9bd84;
+	--ink: #2b2016;
+	--cream-bg: #f2e9d8;
+	--cream-panel: #fbf7ec;
+}
+
+body {
+	background-color: var(--cream-bg);
+	background-image: url('../images/parchment-bg.jpg');
+	background-repeat: repeat;
+	font-family: 'EB Garamond', Georgia, "Times New Roman", Times, serif;
+	color: var(--ink);
+}
+
+#container {
+	background-color: var(--cream-panel);
+	border: 1px solid var(--gold-light);
+	border-top: 4px solid var(--maroon);
+	box-shadow: 0 4px 24px rgba(43, 32, 22, 0.15);
+}
+
+#masthead {
+	background-color: var(--cream-panel);
+	background-image: url('../images/parchment-bg.jpg');
+	background-repeat: repeat;
+	border-bottom: 1px solid var(--gold-light);
+}
+
+#masthead h2 {
+	font-family: 'Cinzel', Georgia, serif;
+	font-weight: 600;
+	color: var(--maroon);
+	letter-spacing: 0.02em;
+}
+
+#navigation {
+	background-color: var(--maroon);
+	background-image: none;
+}
+
+#navigation a {
+	color: var(--cream-panel);
+	border: 1px solid var(--maroon-dark);
+	font-family: 'EB Garamond', Georgia, serif;
+	letter-spacing: 0.02em;
+}
+
+#navigation a:hover,
+#navigation a:focus-visible {
+	background-color: var(--gold);
+	border-color: var(--gold);
+	color: var(--maroon-dark);
+}
+
+.nav-toggle-btn {
+	background: var(--maroon);
+	border: 1px solid var(--maroon-dark);
+	color: var(--cream-panel);
+}
+
+#content_container {
+	background-color: var(--cream-panel);
+}
+
+h1, h2, h3, h4, h5, h6 {
+	color: var(--maroon);
+	font-family: 'Cinzel', Georgia, serif;
+	font-weight: 500;
+}
+
+.section-title,
+.subsection-title {
+	color: var(--maroon);
+}
+
+.subsection-title::before,
+.subsection-title::after {
+	background-color: var(--gold-light);
+}
+
+a {
+	color: var(--maroon);
+}
+
+a:hover {
+	color: var(--olive);
+}
+
+#footer {
+	background-color: var(--cream-panel);
+	border-top: 1px solid var(--gold-light);
+}
+
+#footer a {
+	color: var(--maroon);
+}
+
+#footer a:hover {
+	color: var(--olive);
+}
+
+blockquote {
+	background-color: var(--cream-bg);
+	border-left: 3px solid var(--gold);
+	color: var(--ink);
+}
+
+/* Buttons: Donate / Visit / calls to action */
+.btn {
+	display: inline-block;
+	background-color: var(--maroon);
+	color: var(--cream-panel) !important;
+	font-family: 'Cinzel', Georgia, serif;
+	font-weight: 600;
+	font-size: 0.85em;
+	letter-spacing: 0.04em;
+	text-decoration: none;
+	padding: 12px 28px;
+	border: 1px solid var(--maroon-dark);
+	border-radius: 2px;
+	transition: background-color 0.15s ease, transform 0.15s ease;
+}
+
+.btn:hover {
+	background-color: var(--gold);
+	color: var(--maroon-dark) !important;
+	transform: translateY(-1px);
+}
+
+.btn-outline {
+	background-color: transparent;
+	color: var(--maroon) !important;
+	border: 1px solid var(--maroon);
+}
+
+.btn-outline:hover {
+	background-color: var(--maroon);
+	color: var(--cream-panel) !important;
+}
+
+/* Photo grid restyle */
+.photo-grid a.thumb {
+	border: 2px solid var(--gold-light);
+}
+
+.photo-grid figcaption {
+	color: var(--olive);
+}
+
+/* Hero section (homepage) */
+.hero {
+	position: relative;
+	margin: -1px -1px 0 -1px;
+	overflow: hidden;
+	border-bottom: 4px solid var(--maroon);
+}
+
+.hero img {
+	display: block;
+	width: 100%;
+	height: 46vh;
+	min-height: 260px;
+	max-height: 460px;
+	object-fit: cover;
+	filter: saturate(1.05) contrast(1.03);
+}
+
+.hero::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(180deg, rgba(43,32,22,0.05) 0%, rgba(43,32,22,0.55) 100%);
+}
+
+.hero-caption {
+	position: absolute;
+	left: 50%;
+	bottom: 28px;
+	transform: translateX(-50%);
+	z-index: 2;
+	text-align: center;
+	color: #fff;
+	width: 92%;
+	max-width: 640px;
+}
+
+.hero-caption .seal {
+	display: inline-block;
+	background: rgba(251, 247, 236, 0.94);
+	color: var(--maroon);
+	border: 2px solid var(--gold);
+	border-radius: 6px;
+	padding: 18px 28px;
+	box-shadow: 0 6px 30px rgba(0,0,0,0.35);
+}
+
+.hero-caption h1 {
+	font-family: 'Cinzel', Georgia, serif;
+	font-size: 1.7em;
+	margin: 0 0 4px 0;
+	color: var(--maroon);
+}
+
+.hero-caption .place {
+	font-family: 'EB Garamond', Georgia, serif;
+	font-style: italic;
+	font-size: 1em;
+	color: var(--olive);
+	letter-spacing: 0.05em;
+}
+
+.cta-row {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 14px;
+	justify-content: center;
+	margin: 22px 0 10px 0;
+}
+
+@media (max-width: 960px) {
+	.hero img {
+		height: 34vh;
+		min-height: 200px;
+	}
+	.hero-caption h1 {
+		font-size: 1.25em;
+	}
+	.hero-caption .seal {
+		padding: 12px 18px;
+	}
+}
