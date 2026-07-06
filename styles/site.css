@@ -1,0 +1,193 @@
+/*
+ * Site-wide responsive/UX layer, loaded after style0.css + layout.css.
+ * Colors, fonts, and copy are untouched — this only adds mobile navigation,
+ * fluid layout on small screens, a photo grid + lightbox, and small
+ * interaction polish (hover/focus states, transitions).
+ */
+
+*, *::before, *::after {
+	box-sizing: border-box;
+}
+
+img {
+	max-width: 100%;
+}
+
+a, .nav-toggle-btn, .photo-grid a.thumb img {
+	transition: background-color 0.15s ease, color 0.15s ease, transform 0.15s ease, opacity 0.15s ease;
+}
+
+a:focus-visible, button:focus-visible {
+	outline: 2px solid #069;
+	outline-offset: 2px;
+}
+
+#navigation a:hover,
+#navigation a:focus-visible {
+	background-color: #069;
+	color: #fff;
+}
+
+/* Mobile nav toggle button; hidden on desktop */
+.nav-toggle-btn {
+	display: none;
+	background: #DCDBE0;
+	border: 1px solid #DCDBE0;
+	font-size: 1.3em;
+	line-height: 1;
+	padding: 6px 14px;
+	cursor: pointer;
+	color: #4E5659;
+	width: 100%;
+	text-align: left;
+}
+
+.nav-toggle-btn .label {
+	font-size: 0.55em;
+	vertical-align: middle;
+	margin-left: 8px;
+	letter-spacing: 0.03em;
+}
+
+/* Photo grid (Photos page) */
+.photo-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+	gap: 14px;
+	margin: 10px 0;
+	padding: 0;
+	list-style: none;
+}
+
+.photo-grid figure {
+	margin: 0;
+}
+
+.photo-grid a.thumb {
+	display: block;
+	border-radius: 8px;
+	overflow: hidden;
+	line-height: 0;
+}
+
+.photo-grid img {
+	width: 100%;
+	height: 200px;
+	object-fit: cover;
+	border-radius: 8px;
+	display: block;
+}
+
+.photo-grid a.thumb:hover img,
+.photo-grid a.thumb:focus-visible img {
+	transform: scale(1.03);
+}
+
+.photo-grid figcaption {
+	font-size: 0.8em;
+	color: #79878D;
+	text-align: center;
+	margin-top: 4px;
+}
+
+/* Lightbox */
+.lightbox-overlay {
+	position: fixed;
+	inset: 0;
+	background: rgba(20, 20, 20, 0.9);
+	display: none;
+	align-items: center;
+	justify-content: center;
+	z-index: 1000;
+	padding: 30px 20px;
+}
+
+.lightbox-overlay.open {
+	display: flex;
+}
+
+.lightbox-overlay img {
+	max-width: 100%;
+	max-height: 88vh;
+	border-radius: 4px;
+	box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+.lightbox-close {
+	position: absolute;
+	top: 14px;
+	right: 20px;
+	color: #fff;
+	font-size: 2.2em;
+	line-height: 1;
+	cursor: pointer;
+	background: none;
+	border: none;
+	padding: 4px 10px;
+}
+
+/* Responsive breakpoints */
+@media (max-width: 960px) {
+	#container {
+		width: 100%;
+		max-width: 934px;
+	}
+
+	#masthead,
+	#navigation,
+	#content_container {
+		margin-left: 0;
+	}
+
+	.nav-toggle-btn {
+		display: block;
+	}
+
+	#navigation ul {
+		display: none;
+		flex-direction: column;
+		width: 100%;
+	}
+
+	#navigation.nav-open ul {
+		display: flex;
+	}
+
+	#navigation li {
+		float: none;
+		width: 100%;
+	}
+
+	#navigation a {
+		margin: 0;
+		border: none;
+		border-top: 1px solid #c9c8cf;
+	}
+
+	#column_left,
+	#column_right {
+		float: none;
+		width: 100% !important;
+	}
+
+	#googleCalendar iframe {
+		width: 100%;
+		height: 600px;
+	}
+}
+
+@media (max-width: 600px) {
+	.photo-grid {
+		grid-template-columns: 1fr 1fr;
+	}
+
+	.photo-grid img {
+		height: 140px;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	a, .nav-toggle-btn, .photo-grid a.thumb img {
+		transition: none;
+	}
+}
